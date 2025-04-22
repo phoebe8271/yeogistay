@@ -10,7 +10,7 @@ import { changeHeaderConfigAction } from '@/store/modules/main'
 export default memo(function Detail() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(changeHeaderConfigAction({ isFixed: false }))
+    dispatch(changeHeaderConfigAction({ isFixed: false, topAlpha: false }))
   }, [dispatch])
   return (
     <DetialWrapper>

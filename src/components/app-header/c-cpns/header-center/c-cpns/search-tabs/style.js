@@ -9,12 +9,13 @@ export const SearchTabsWrapper = styled.div`
         height: 20px;
         margin: 10px 16px;
         font-size: 16px;
-        color: #6A6A6A;
+        color: ${props => props.theme.isAlpha ? "#fff" : "#6A6A6A"};
         cursor: pointer;
         
 
         &.active {
-            color: #222;
+            color: ${props => props.theme.isAlpha ? "#fff" : "#222"};
+            font-weight: 800;
             border-bottom: 1px solid ${props => props.theme.isAlpha ? "#fff" : "#333"};
         }
   }

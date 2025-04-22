@@ -26,7 +26,7 @@ export default memo(function Home() {
 
   useEffect(() => {
     dispatch(fetchHomeDataAction())
-    dispatch(changeHeaderConfigAction({ isFixed: true }))
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true }))
   }, [dispatch])
 
   return (
@@ -36,7 +36,7 @@ export default memo(function Home() {
         {/* <h1>기억에 남는 여행 여기에 있습니다, 여기스테이</h1> */}
 
         {hasObjectValue(hotPlaceInfo) && <HomeSectionV2 infoData={hotPlaceInfo} />}
-        
+
         {hasObjectValue(discoverCityInfo) && <HomeDiscoverCity infoData={discoverCityInfo} />}
 
 

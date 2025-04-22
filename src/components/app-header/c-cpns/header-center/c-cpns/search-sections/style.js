@@ -16,6 +16,7 @@ export const SearchSectionsWrapper = styled.div`
         display: flex;
         align-items: center;
         border-radius: 30px;
+        background-color: #fff;
 
         .info {
             flex: 1;
@@ -41,13 +42,15 @@ export const SearchSectionsWrapper = styled.div`
       background-color: #f7f7f7;
     }
 
+    &.active {
+      background-color: #ebebeb; // 更明顯的灰底，自己可調整
+    }
+
     .divider {
         height: 32px;
         width: 1px;
         background-color: #f7f7f7;
     }
-
-    
 
   }
 

@@ -5,7 +5,7 @@ export const RightWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    color: ${props => props.theme.text.primaryColor};
+    color: ${props => props.theme.isAlpha ? "#fff" : props.theme.text.primaryColor};
     font-weight: 500;
 
     .btns{
@@ -53,6 +53,8 @@ export const RightWrapper = styled.div`
         align-items: center;
         padding: 8px 8px 8px 14px;
         box-sizing: border-box;
+        color: #565656;
+        background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 30px;
         cursor: pointer;

@@ -7,6 +7,7 @@ import IconArrowLeft from '@/assets/svg/icon/arrow-left.svg?react';
 import IconArrowRight from '@/assets/svg/icon/arrow-right.svg?react';
 import Indicator from '@/base-ui/indicator/index';
 import classNames from 'classnames'
+import { getDisplayPrice } from '@/utils/getdisplayprice'
 
 
 const RoomItem = memo((props) => {
@@ -118,13 +119,7 @@ const RoomItem = memo((props) => {
         </div>
 
         {/* 가격 */}
-        <div className="price">
-          {(typeof itemData?.price_format === "string"
-            ? itemData.price_format
-            : typeof itemData?.price === "number"
-              ? itemData.price.toLocaleString()
-              : "")}/박
-        </div>
+        <div className="price">{getDisplayPrice(itemData)}/박</div>
       </div>
     </ItemWrapper>
   )
