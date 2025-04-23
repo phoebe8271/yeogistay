@@ -4,7 +4,7 @@ export const DateSelectorWrapper = styled.div`
   position: absolute;
   top: 140px;
   left: -285px;
-  width: 680px; /* ⬅️ 調大寬度容納兩個月曆 */
+  width: 680px; 
   height: 373px;
   padding: 32px 24px;
   background-color: white;
@@ -19,6 +19,7 @@ export const DateSelectorWrapper = styled.div`
     gap: 24px;
   }
 
+  /* Chrome DevTools 중에서 볼 수 있음 */
   .MuiDateCalendar-root {
     display: flex;
     gap: 24px;
@@ -35,7 +36,7 @@ export const DateSelectorWrapper = styled.div`
 
   .MuiPickersDay-root {
     font-weight: 600;
-    border-radius: 50%; /* 保持圓形外觀 */
+    border-radius: 50%; 
   }
 
   .Mui-selected {

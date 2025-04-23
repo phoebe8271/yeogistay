@@ -11,10 +11,11 @@ export const RightWrapper = styled.div`
     .btns{
         display: flex;
         align-items: center;
-        cursor: pointer;
+        font-weight: 600;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis ;
+        cursor: pointer;
 
         .btn{
             padding: 12px 15px;

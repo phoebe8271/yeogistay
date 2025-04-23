@@ -8,6 +8,7 @@ import SearchTabs from './c-cpns/search-tabs/index';
 import SearchSections from './c-cpns/search-sections/index';
 import Locationselector from './c-cpns/search-extra-panel/locationselector/index';
 import Dateselector from './c-cpns/search-extra-panel/dateselector/index';
+import Guestselector from './c-cpns/search-extra-panel/guestselector/index';
 
 
 export default memo(function HeaderCenter(props) {
@@ -100,7 +101,7 @@ export default memo(function HeaderCenter(props) {
 
                     {panelIndex === 0 && <Locationselector ref={panelRef} />}
                     {panelIndex === 1 && <Dateselector ref={panelRef} />}
-                    {panelIndex === 2 && <GuestSelector ref={panelRef} />}
+                    {panelIndex === 2 && <Guestselector ref={panelRef} />}
 
                 </div>
             </CSSTransition>
