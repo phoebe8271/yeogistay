@@ -131,7 +131,7 @@ export const BrowserWrapper = styled.div`
       transition: height 300ms ease;
       display: flex;
       justify-content: center;
-      height: ${props => props.showPicList ? "67px" : "0"};
+      height: ${props => props.$showPicList ? "67px" : "0"};
 
       .item {
         margin-right: 15px;

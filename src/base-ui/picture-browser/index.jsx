@@ -29,7 +29,6 @@ const PictureBrowser = memo((props) => {
 
     // 事件監聽的邏輯
     function closeBtnClickHandle() {
-        console.log("點擊關閉按鈕")
         if (closeClick) closeClick();
     }
 
@@ -48,7 +47,7 @@ const PictureBrowser = memo((props) => {
     }
 
     return (
-        <BrowserWrapper $isNext={isNext} showPicList={showPicList}>
+        <BrowserWrapper $isNext={isNext} $showPicList={showPicList}>
             <div className='picturebrowser-top'>
                 <div className='close-btn' onClick={closeBtnClickHandle} >
                     <IconClose width="40" height="40" />
@@ -93,7 +92,7 @@ const PictureBrowser = memo((props) => {
                                 pictureUrls.map((item, index) => {
                                     return (
                                         <div className={classNames('item', { active: currentIndex === index })}
-                                            key={item}
+                                            key={item.id || index}
                                             onClick={() => indicatorItemClickHandle(index)}
                                         >
                                             <img src={`http://localhost:1337${item?.formats?.medium?.url}`} alt="" />

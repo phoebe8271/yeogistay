@@ -19,7 +19,7 @@ padding: 24px 80px 0;
 .header-r{
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
 
     span {
       text-decoration: underline;
@@ -28,11 +28,12 @@ padding: 24px 80px 0;
     .share-icon{
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 6px;
         border: none;
         border: 1px solid transparent;
         border-radius: 10px;
         padding: 6px 10px;
+        font-size: 14px;
         cursor: pointer;
      
         &:hover {
@@ -46,11 +47,28 @@ padding: 24px 80px 0;
     }
 
     .save-icon{
+        display: flex;
+        align-items: center;
+        gap: 6px;
         border: none;
         border: 1px solid transparent;
         border-radius: 10px;
         padding: 6px 10px;
         cursor: pointer;
+
+        .favorite-icon{
+            width: 20px;
+            height: 20px;
+            color: #ff0000;
+            
+            &:hover {
+             background-color: transparent;
+            }  
+            
+            &.Mui-checked{
+                color:${props => props.theme.color.primaryColor};
+            }
+        }
      
         &:hover {
         background-color: #F2F2F2; 

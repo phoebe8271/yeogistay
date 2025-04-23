@@ -21,7 +21,7 @@ const routes = [
         element: <Search />
     },
     {
-        path: "/detail",
+        path: "/detail/:id",
         element: <Detail />
     },
     {

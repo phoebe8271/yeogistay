@@ -2,13 +2,13 @@ import React, { memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { RoomsWrapper } from './style'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useSelector } from 'react-redux'
 import RoomItem from '@/components/room-item/index'
-import { changeDetailInfoAction } from '@/store/modules/detail'
+// import { changeDetailInfoAction } from '@/store/modules/detail'
 
 const EntireRooms = memo(() => {
+    
     // 從 redux 中獲取 roomList 數據
-
     const { roomList, totalCount, isLoading } = useSelector((state) => ({
         roomList: state.entire.roomList,
         totalCount: state.entire.totalCount,
@@ -17,12 +17,9 @@ const EntireRooms = memo(() => {
 
     // 點擊卡片後跳轉詳情頁面
     const navigate = useNavigate()
-    const dispatch = useDispatch() // 儲存到 store
     const itemClickHandle = useCallback((item) => {
-        // console.log(item); //test
-        dispatch(changeDetailInfoAction(item))
-        navigate("/detail")
-    }, [navigate, dispatch])
+        navigate(`/detail/${item.id}`)
+    }, [navigate])
 
 
     return (

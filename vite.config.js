@@ -9,11 +9,14 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig({
   plugins: [
-    react(), 
+    react(),
     svgr({
       exportAsDefault: true
     })
   ],
+  server: {
+    historyApiFallback: true
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

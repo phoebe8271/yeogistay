@@ -1,4 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getEntireRoomListData } from "@/services/modules/entire";
+
+export const fetchDetailInfoAction = createAsyncThunk(
+  "fetchDetailInfo",
+  async (id, { dispatch }) => {
+    const res = await getEntireRoomListData();
+    const roomList = res.data;
+    const roomItem = roomList.find(item => String(item.id) === String(id));
+
+    if (roomItem) {
+      dispatch(changeDetailInfoAction(roomItem));
+    } else {
+      console.warn("找不到對應的房源資料");
+    }
+  }
+);
 
 const detailSlice = createSlice({
   name: 'detail',

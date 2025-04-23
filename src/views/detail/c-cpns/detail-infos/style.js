@@ -14,11 +14,11 @@ padding: 24px 80px 0;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  
 
   .detail-title {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 600;
-    color: #222;
   }
 
   .detail-verifyinfo {

@@ -9,7 +9,6 @@ import { getDiscoverCityData } from "@/services/modules/home";
 
 
 export const fetchHomeDataAction = createAsyncThunk("fetchdata", async (payload, { dispatch }) => {
-  console.log("payload:", payload)
   getHomeGoodPriceData().then(res => {
     dispatch(changeGoodPriceInfoAction(res[0])) //array 一個陣列（Array），陣列裡面每一筆才是你要顯示的資料物件
   })

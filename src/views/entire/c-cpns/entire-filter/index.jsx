@@ -11,8 +11,6 @@ const EntireFilter = memo(() => {
 
 
   function itemClickHandle(item) {
-    // console.log(item);
-
     const newItems = [...selectItems]
     if (newItems.includes(item)) {   //移除操作
       const itemIndex = newItems.findIndex(filterItem => filterItem === item)
