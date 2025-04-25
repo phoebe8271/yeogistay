@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const InfosWrapper = styled.div`
 padding: 24px 80px 0;
+white-space: nowrap;
 
 .detailinfos {
   max-width: 1120px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
 }
 
 .namesinfo {
@@ -21,52 +22,55 @@ padding: 24px 80px 0;
     font-weight: 600;
   }
 
-  .detail-verifyinfo {
-    font-size: 16px;
+  .verify-message {
+    font-size: 18px;
     color: #717171;
   }
 }
 
-.rating-box {
-  display: flex;
-  gap: 24px;
-  box-sizing: border-box;
-  padding: 22px 26px;
-  margin-bottom: 12px;
-  align-items: center;
-  border-radius: 12px;
-  justify-content: space-around;
-  border: 1px solid #ddd;
+.center-part {
+  position: relative;
+  padding-right: 400px; 
+  word-break: break-word;
+  white-space: normal;
 
-  .rating-content{
-    padding: 20px 28px;
-    display: flex;
-
-
-
-    .badge {
-      font-size: 14px;
-      color: #000;
-    }
-
-    .badge-text {
-      font-size: 14px;
-      color: #717171;
-    }
-  
-    .reviews-score {
-      font-size: 16px;
-      font-weight: 600;
-    }
-  
-    .review-count {
-      font-size: 14px;
-      color: #717171;
-    }
-  
+  .review-section {
+    width: 100%;
   }
 
-  
+  .card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 375px;
+  }
 }
 
+.room-pic{
+  display: flex;
+  flex-direction: column ;
+  gap: 24px;
+  font-size: 22px;
+
+  
+
+  img{
+    width: 318px;
+    border-radius: 10px;
+  }
+}
+
+.map{
+  display: flex;
+  flex-direction: column ;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+
+  .site{
+    font-size: 22px;
+    padding: 0 0 24px;
+    font-weight: 500;
+  }
+
+}  
 `;

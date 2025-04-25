@@ -4,12 +4,12 @@ export const PicturesWrapper = styled.div`
   position: relative;
   margin-top: 20px;
   padding: 0 80px;
-
+  
   > .detailpic {
     display: flex;
     height: 600px;
     background-color: #fff;
-    gap: 10px; // ✅ 左右間隔
+    gap: 10px; 
 
     &:hover {
       .pic-cover {
@@ -89,6 +89,7 @@ export const PicturesWrapper = styled.div`
     bottom: 15px;
     line-height: 22px;
     padding: 6px 15px;
+    white-space: nowrap;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.8);
     cursor: pointer;

@@ -9,7 +9,7 @@ export function getEntireRoomListData(page = 1, pageSize = 12) {
         "pagination[pageSize]": pageSize
       }
     }).then(res => {
-      // console.log("getEntireRoomListData 回傳結果：", res)
+      console.log("getEntireRoomListData 回傳結果：", res)
       return res
     })
   }

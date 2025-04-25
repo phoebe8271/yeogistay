@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HeaderWrapper = styled.div`
 
 padding: 24px 80px 0;
+white-space: nowrap;
 
 .detailheader-content{
     display: flex;
