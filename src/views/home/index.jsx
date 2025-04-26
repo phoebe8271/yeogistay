@@ -10,6 +10,8 @@ import HomeDiscoverCity from './c-cpns/home-discovercity/index';
 import { hasObjectValue } from '@/utils/has-object-value';
 import { changeHeaderConfigAction } from '@/store/modules/main';
 
+import SingUpPanel from '@/components/app-header/c-cpns/header-right/c-cpns/signup';
+
 
 export default memo(function Home() {
   // 從 redux 中獲取數據
@@ -44,7 +46,7 @@ export default memo(function Home() {
         {hasObjectValue(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
         {hasObjectValue(findMoreRoomsInfo) && <HomeSectionV1 infoData={findMoreRoomsInfo} />}
 
-
+        <SingUpPanel/>
       </div>
 
     </HomeWrapper>

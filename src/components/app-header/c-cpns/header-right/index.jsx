@@ -3,6 +3,7 @@ import { RightWrapper } from './style'
 import LanguageIcon from '@/assets/svg/icon/header-language.svg?react';
 import UserProfileIcon from '@/assets/svg/icon/header-userprofile.svg?react';
 import UserMenuIcon from '@/assets/svg/icon/header-usermenu.svg?react';
+import SingUpPanel from './c-cpns/signup/index';
 
 export default memo(function HeaderRight() {
     const [showPanel, setShowPanel] = useState(false);
@@ -50,8 +51,9 @@ export default memo(function HeaderRight() {
                             <div className='item'>도움말 센터</div>
                         </div>
                     </div>
-
                 )}
+
+                {/* <SingUpPanel/> */}
             </div>
         </RightWrapper>
     )
