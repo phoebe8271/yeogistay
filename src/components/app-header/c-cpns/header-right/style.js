@@ -94,8 +94,7 @@ export const RightWrapper = styled.div`
                     background-color: #f7f7f7;
                 }
             }
-        }
-        
+        } 
     }
 
     .userprofile{

@@ -22,8 +22,6 @@ export const HeaderWrapper = styled.div`
             align-items: center;
             height: 80px;
         }
-        
-        
     }
 
     .cover{

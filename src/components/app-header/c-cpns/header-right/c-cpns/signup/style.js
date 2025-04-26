@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const SignUpWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,12 +25,15 @@ export const SignUpWrapper = styled.div`
   }
 
   .signup-title{
+    position: relative;
     display: flex;
     align-items: center;
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
 
     .close-btn {
+      position: absolute;
+      left: 0;
       width: 16px;
       height: 16px;
       cursor: pointer;
@@ -67,12 +76,10 @@ export const SignUpWrapper = styled.div`
       font-size: 12px;
       color: #717171;
       line-height: 1.4;
+    }
 
-      a {
-        color: #222;
-        font-weight: bold;
-        text-decoration: underline;
-      }
+    .notice.error {
+      color: red;
     }
 
     .continue {
@@ -92,6 +99,7 @@ export const SignUpWrapper = styled.div`
     text-align: center;
     color: #717171;
     font-size: 14px;
+    text-decoration: underline;
     cursor: pointer;
   }
 
@@ -112,8 +120,23 @@ export const SignUpWrapper = styled.div`
       cursor: pointer;
 
       &:hover{
-      background-color: #ddd;
+        background-color: #ddd;
+      }
     }
+  }
+
+  .resend-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+
+    :hover{
+      color: darkred;
     }
   }
 `;
