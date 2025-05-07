@@ -11,8 +11,8 @@ const store = configureStore({
         home: homeReducer,
         entire: entireReducer,
         detail: detailReducer
-
     }
 })
 
 export default store;
+// 여러 slice를 하나의 store로 결합함

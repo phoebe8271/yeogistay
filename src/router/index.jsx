@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
+// React.lazy로 페이지 컴포넌트 동적 로드 (코드 분할, 레이지 로딩)
 const Home = React.lazy(() => import("@/views/home"))
-const Search = React.lazy(() => import("@/views/search"))
 const Detail = React.lazy(() => import("@/views/detail"))
 const Entire = React.lazy(() => import("@/views/entire"))
-const Demo = React.lazy(() => import("@/views/demo"))
+
 
 const routes = [
     {
@@ -17,21 +17,13 @@ const routes = [
         element: <Home />
     },
     {
-        path: "/search",
-        element: <Search />
-    },
-    {
         path: "/detail/:id",
         element: <Detail />
     },
     {
         path: "/entire",
         element: <Entire />
-    },
-    {
-        path: "/demo",
-        element: <Demo />
-    },
+    }
 ]
 
 export default routes

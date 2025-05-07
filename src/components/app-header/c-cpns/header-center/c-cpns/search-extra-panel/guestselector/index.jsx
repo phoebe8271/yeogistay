@@ -28,6 +28,7 @@ const GuestItem = ({ label, desc, count, setCount }) => {
 }
 
 export default memo(function GuestSelector() {
+    // 상태 관리, 각 타입별 인원 수 useState로 관리
     const [adults, setAdults] = useState(0)
     const [children, setChildren] = useState(0)
     const [infants, setInfants] = useState(0)

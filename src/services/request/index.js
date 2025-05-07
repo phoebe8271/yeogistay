@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL, TIMEOUT } from "./config"
 
+// 요청 클래스 래핑
 class HYRequest {
     constructor(baseURL, timeout) {
         this.instance = axios.create({
@@ -8,7 +9,7 @@ class HYRequest {
             timeout
         });
 
-        // 攔截
+        // 인터셉터, data 부분만 반환
         this.instance.interceptors.response.use(
             (res) => res.data,
             (err) => Promise.reject(err.response || err)

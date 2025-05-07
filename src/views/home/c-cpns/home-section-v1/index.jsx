@@ -21,7 +21,6 @@ const HomeSectionV1 = memo((props) => {
 
 HomeSectionV1.propTypes = {
     infoData: PropTypes.object
-
 }
 
 export default HomeSectionV1

@@ -1,4 +1,4 @@
-// 統一價格顯示
+// 숙소 가격 표시를 통일하기
 
 export function getDisplayPrice(item) {
     if (typeof item?.price_format === 'string' && item.price_format.includes("₩")) {

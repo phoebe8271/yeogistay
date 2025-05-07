@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { throttle } from "underscore"; // 做節流
+import { throttle } from "underscore"; // 스로틀 처리
 
 export default function useScrollPosition() {
-    // 狀態來記錄位置
+    // 현재 스크롤 위치를 상태로 기록
     const [scrollX, setScrollX] = useState(0)
     const [scrollY, setScrollY] = useState(0)
 
-    // 監聽 window 滾動
+    // window 스크롤 이벤트 감지
     useEffect(() => {
         const handleScroll = throttle(function () {
             setScrollX(window.scrollX)
             setScrollY(window.scrollY)
-        }, 100) // 節流
+        }, 100) // 100ms마다 한 번 실행 (스로틀)
 
         window.addEventListener("scroll", handleScroll)
 
@@ -20,6 +20,6 @@ export default function useScrollPosition() {
         }
     }, [])
 
-    // 返回
+    // scrollX, scrollY를 외부로 반환
     return { scrollX, scrollY }
 }

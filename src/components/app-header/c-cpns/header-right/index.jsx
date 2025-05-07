@@ -7,18 +7,18 @@ import SingUpPanel from './c-cpns/signup/index';
 import './signup-overlay.css'
 
 export default memo(function HeaderRight() {
-    const [showPanel, setShowPanel] = useState(false);
-    const [showSignup, setShowSignup] = useState(false);
+    const [showPanel, setShowPanel] = useState(false); // 드롭다운 패널 표시 여부
+    const [showSignup, setShowSignup] = useState(false); // 회원가입 패널 표시 여부
 
     useEffect(() => {
         function windowHandleClick(event) {
             const panel = document.querySelector('.panel');
             const profile = document.querySelector('.profile');
 
-            if (panel && panel.contains(event.target)) return; // 點到panel裡，不關
-            if (profile && profile.contains(event.target)) return; // 點到profile區，不關
+            if (panel && panel.contains(event.target)) return; // 패널 내부 클릭이면 무시
+            if (profile && profile.contains(event.target)) return; // 패널 영역 클릭이면 무시
 
-            setShowPanel(false);
+            setShowPanel(false); // 다른 곳 클릭 시 → 패널 닫기
         }
 
         window.addEventListener('click', windowHandleClick, true);
@@ -28,6 +28,7 @@ export default memo(function HeaderRight() {
         };
     }, []);
 
+    // 프로필 아이콘 클릭 시 → 패널 열기
     function profileClickHandle() {
         setShowPanel(true)
     }
@@ -53,13 +54,13 @@ export default memo(function HeaderRight() {
                             <div
                                 className='item register'
                                 onClick={(e) => {
-                                    e.stopPropagation(); 
+                                    e.stopPropagation();  // 이벤트 버블링을 막아 상위 이벤트 실행 방지
                                     setShowSignup(true);
                                     setShowPanel(false);
                                 }}>회원 가입</div>
                             <div className='item login'
                                 onClick={(e) => {
-                                    e.stopPropagation();
+                                    e.stopPropagation();  // 이벤트 버블링을 막아 상위 이벤트 실행 방지
                                     setShowSignup(true);
                                     setShowPanel(false);
                                 }}>로그인</div>

@@ -52,8 +52,6 @@ white-space: nowrap;
   gap: 24px;
   font-size: 22px;
 
-  
-
   img{
     width: 318px;
     border-radius: 10px;
@@ -71,6 +69,6 @@ white-space: nowrap;
     padding: 0 0 24px;
     font-weight: 500;
   }
-
+  
 }  
 `;

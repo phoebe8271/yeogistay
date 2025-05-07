@@ -5,6 +5,7 @@ import { SiNaver } from 'react-icons/si'
 import { MdEmail } from 'react-icons/md'
 import CloseIcon from '@mui/icons-material/Close';
 
+// 국가/지역 코드 목록
 const countries = [
     { name: '한국', code: '+82' },
     { name: '대만', code: '+886' },
@@ -13,26 +14,28 @@ const countries = [
 
 export default memo(function SingUpPanel({ onClose }) {
 
-    const [selectedCode, setSelectedCode] = useState(countries[0].code)
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
-    const [step, setStep] = useState('inputPhone')
-    // 'inputPhone' ➔ 'verify' ➔ 'success'
-    const [timer, setTimer] = useState(60)
-    const [verificationCode, setVerificationCode] = useState('')
-    const [canResend, setCanResend] = useState(false) // 重新發送狀態
+    const [selectedCode, setSelectedCode] = useState(countries[0].code) // 국가 코드
+    const [phoneNumber, setPhoneNumber] = useState('') // 입력한 전화번호
+    const [errorMessage, setErrorMessage] = useState('') // 오류 메시지
+    const [step, setStep] = useState('inputPhone') // 현재 단계 'inputPhone' ➔ 'verify' ➔ 'success'
+    const [timer, setTimer] = useState(60) // 타이머
+    const [verificationCode, setVerificationCode] = useState('') // 인증번호
+    const [canResend, setCanResend] = useState(false) // 재발송 가능 여부
 
+    // 사용자가 선택한 국가 코드 업데이트.
     const handleCountryChange = (e) => {
         const code = e.target.value
         setSelectedCode(code)
     }
 
     const handlePhoneChange = (e) => {
-        let value = e.target.value.replace(/\D/g, ''); // 只留數字
+        // 전화번호 숫자만 허용, 최대 10자리 제한.
+        let value = e.target.value.replace(/\D/g, ''); 
         if (value.length > 10) value = value.slice(0, 10);
         setPhoneNumber(value);
     }
 
+    // 전화번호 형식 검사(10자리, 10으로 시작), 통과하면 인증 단계로 전환하고 타이머 시작.
     const handleSubmitPhone = () => {
         if (phoneNumber.length !== 10 || !phoneNumber.startsWith('10')) {
             setErrorMessage('전화번호는 10자리이고 10으로 시작해야 합니다.');
@@ -43,12 +46,14 @@ export default memo(function SingUpPanel({ onClose }) {
         }
     }
 
+    // 입력한 인증번호 6자리 영숫자만 허용
     const handleVerificationChange = (e) => {
-        let value = e.target.value.replace(/[^a-zA-Z0-9]/g, ''); // 只允許英文+數字
+        let value = e.target.value.replace(/[^a-zA-Z0-9]/g, ''); // 영숫자만 허용
         if (value.length > 6) value = value.slice(0, 6);
         setVerificationCode(value);
     }
 
+    // 인증번호 길이 확인, 6자리면 성공, 아니면 알림 표시.
     const handleSubmitVerification = () => {
         if (verificationCode.length === 6) {
             setStep('success');
@@ -57,23 +62,25 @@ export default memo(function SingUpPanel({ onClose }) {
         }
     }
 
+    // 60초 타이머 시작, 끝나면 재발송 가능 설정.
     const startTimer = () => {
         let countdown = 60;
         setTimer(countdown);
-        setCanResend(false); // 重新倒數時禁用重新發送
+        setCanResend(false); 
 
         const interval = setInterval(() => {
             countdown -= 1;
             setTimer(countdown);
             if (countdown <= 0) {
                 clearInterval(interval);
-                setCanResend(true); // 倒數完可以重新發送
+                setCanResend(true); // 재발송
             }
         }, 1000);
     }
 
+    // 타이머 재시작 및 알림 표시.
     const handleResendCode = () => {
-        startTimer(); // 重新開始倒數
+        startTimer(); 
         alert('인증번호가 다시 전송되었습니다!');
     }
 

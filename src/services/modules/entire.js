@@ -1,5 +1,6 @@
 import hyRequest from "@/services/index";
 
+// 전체 숙소 목록 데이터 가져오기 (페이지네이션 포함)
 export function getEntireRoomListData(page = 1, pageSize = 12) {
     return hyRequest.get({
       url: "/roominfos",

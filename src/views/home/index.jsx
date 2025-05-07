@@ -12,7 +12,7 @@ import { changeHeaderConfigAction } from '@/store/modules/main';
 
 
 export default memo(function Home() {
-  // 從 redux 中獲取數據
+  // useSelector: Redux store 값 가져오기 (shallowEqual: 얕은 비교로 불필요 렌더 방지)
   const { goodPriceInfo, hotPlaceInfo, findMoreRoomsInfo, highScoreInfo, discoverCityInfo } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     hotPlaceInfo: state.home.hotPlaceInfo,
@@ -21,30 +21,29 @@ export default memo(function Home() {
     discoverCityInfo: state.home.discoverCityInfo
   }), shallowEqual)
 
-  // 派發異步事件：發起進行的網路請求
+  // useDispatch: dispatch 함수 가져오기
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchHomeDataAction())
-    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true }))
-  }, [dispatch])
+    // 컴포넌트 마운트 시 API 데이터 요청
+    dispatch(fetchHomeDataAction()) 
+    // 헤더 설정값 변경 (헤더 고정, alpha 적용)
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true })) 
+  }, [dispatch]) // dispatch 의존성 (dispatch 바뀌면 다시 실행)
 
   return (
     <HomeWrapper>
+      {/* 배너 컴포넌트 */}
       <HomeBanner />
+
       <div className='content-wrapper'>
-        {/* <h1>기억에 남는 여행 여기에 있습니다, 여기스테이</h1> */}
-
+         {/* 각 영역 데이터 있을 때만 렌더 */}
         {hasObjectValue(hotPlaceInfo) && <HomeSectionV2 infoData={hotPlaceInfo} />}
-
         {hasObjectValue(discoverCityInfo) && <HomeDiscoverCity infoData={discoverCityInfo} />}
-
-
         {hasObjectValue(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
         {hasObjectValue(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
         {hasObjectValue(findMoreRoomsInfo) && <HomeSectionV1 infoData={findMoreRoomsInfo} />}
       </div>
-
     </HomeWrapper>
   )
 })

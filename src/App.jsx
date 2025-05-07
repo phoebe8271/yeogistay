@@ -8,15 +8,21 @@ import useScrollTop from '@/hooks/useScrollTop';
 
 export default memo(function App() {
 
-  // 當頁面發生切換的時候，將瀏覽器滾到頂部(已封裝成一個 Hook)
+  // 페이지가 바뀔 때마다 자동으로 맨 위로 스크롤 (커스텀 Hook으로 구현)
   useScrollTop()
 
   return (
     <div className='app'>
+      
+      {/* 헤더 렌더링 */}
       <AppHeader />
+      
+      {/* 라우트 설정에 따라 페이지 렌더링 */}
       <div className='page'>
         {useRoutes(routes)}
       </div>
+      
+      {/* 푸터 렌더링 */}
       <AppFooter />
     </div>
   )

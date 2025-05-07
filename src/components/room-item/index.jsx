@@ -11,11 +11,13 @@ import { getDisplayPrice } from '@/utils/getdisplayprice'
 
 
 const RoomItem = memo((props) => {
-  const { itemData, column = 4, gap = 24, itemClick } = props
-  const [selectIndex, setSelectIndex] = useState(0)
-  const sliderRef = useRef()
+  // props 구조 분해: 데이터, 열수, 간격, 클릭 이벤트
+  const { itemData, column = 4, gap = 24, itemClick } = props 
+  
+  const [selectIndex, setSelectIndex] = useState(0) // 현재 선택된 이미지 인덱스
+  const sliderRef = useRef() // ref: Carousel 참조 객체
 
-  // 統一處理 picture_url 為陣列形式
+  // 이미지 데이터를 배열로 통일
   const rawPictures = itemData?.picture_url
   const pictures = Array.isArray(rawPictures)
     ? rawPictures
@@ -23,7 +25,7 @@ const RoomItem = memo((props) => {
       ? [rawPictures]
       : []
 
-  // 控制左右箭頭
+  // 좌우 화살표 클릭 처리
   function controlClickHandle(isNext = true, event) {
     if (!sliderRef.current) return
     isNext ? sliderRef.current.next() : sliderRef.current.prev()
@@ -35,12 +37,12 @@ const RoomItem = memo((props) => {
     if (newIndex > length - 1) newIndex = 0
     setSelectIndex(newIndex)
 
-    // 阻止事件冒泡
+    // 이벤트 버블링 막기 (상위 클릭 막음)
     event.stopPropagation();
 
   }
 
-  // 判斷點擊後是否跳轉詳情頁面
+  // 아이템 클릭 시 → 상세페이지 이동
   function itemClickHandle() {
     if (itemClick) itemClick(itemData)
   }
@@ -49,7 +51,7 @@ const RoomItem = memo((props) => {
     <ItemWrapper $column={column} $gap={gap} onClick={itemClickHandle}>
       <div className="inner">
         <div className="slider">
-          {/* 左右箭頭控制：多張圖才顯示 */}
+          {/* 좌우 화살표: 이미지 여러장일 때만 표시 */}
           {pictures.length > 1 && (
             <div className="picture-control">
               <div className="btn-left" onClick={(event) => controlClickHandle(false, event)}>
@@ -61,6 +63,7 @@ const RoomItem = memo((props) => {
             </div>
           )}
 
+          {/* 아래 인디케이터 */}
           {pictures.length > 0 && (
             <div className='indicator'>
               <Indicator selectIndex={selectIndex}>
@@ -77,7 +80,7 @@ const RoomItem = memo((props) => {
             </div>
           )}
 
-          {/* 輪播圖片 */}
+          {/* 캐러셀: Antd Carousel */}
           <Carousel dots={false} ref={sliderRef}>
             {pictures.map((item, index) => {
               const url = item?.formats?.medium?.url
@@ -91,7 +94,7 @@ const RoomItem = memo((props) => {
           </Carousel>
         </div>
 
-        {/* 名稱 + 評價 */}
+        {/* 이름 + 리뷰 평점 */}
         <div className="namegp">
           <div className="name">{itemData.name || itemData?.city}</div>
           {itemData?.reviews_score && (
@@ -106,7 +109,7 @@ const RoomItem = memo((props) => {
         {/* 부제목 */}
         <div className="title">{itemData?.title}</div>
 
-        {/* 설명 */}
+        {/* 설명 텍스트 */}
         <div className="desc">
           {
             (() => {

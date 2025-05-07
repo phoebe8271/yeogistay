@@ -7,20 +7,21 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 import { PickersDay } from '@mui/x-date-pickers/PickersDay'
 
+// dayjs 확장, 날짜가 범위 내에 있는지 판단 가능하게 함
 dayjs.extend(isBetween)
 
 function Dateselector(props, ref) {
-    // 상태 관리
-    // 사용자가 선택한 시작 날짜와 종료 날짜 저장
+    // 선택한 시작일, 종료일 상태 관리
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
 
-    // 좌측 달력, 우측 달력의 현재 표시 중인 월을 각각 상태로 관리
+    // 왼쪽/오른쪽 달력 현재 표시 월
     const [leftRefDate, setLeftRefDate] = useState(dayjs())
     const [rightRefDate, setRightRefDate] = useState(dayjs().add(1, 'month'))
 
     // 날짜 클릭 처리
     const handleChange = (newDate) => {
+        // 이미 시작일이 있고 종료일이 없을 때
         if (startDate && !endDate) {
             if (newDate.isBefore(startDate)) {
                 setStartDate(newDate)
@@ -30,6 +31,7 @@ function Dateselector(props, ref) {
             } else {
                 setEndDate(newDate)
             }
+            // 시작일이 없거나 한 쌍 선택이 끝난 경우, 클릭한 날짜를 새 시작일로 설정하고 상태 초기화.
         } else {
             setStartDate(newDate)
             setEndDate(null)
@@ -38,20 +40,20 @@ function Dateselector(props, ref) {
         }
     }
 
-    // 날짜 강조 조건
+    // 특정 날짜가 선택 범위 내에 있는지 판단
     const isInRange = (date) => {
         if (!startDate || !endDate) return false
         return dayjs(date).isBetween(startDate, endDate, null, '[]') ||
             dayjs(date).isBetween(endDate, startDate, null, '[]')
     }
 
-    // 시작일 혹은 종료일인지 확
+    // 특정 날짜가 선택한 시작/종료일인지 판단
     const isSelected = (date) => {
         return (startDate && date.isSame(startDate, 'day')) ||
             (endDate && date.isSame(endDate, 'day'))
     }
 
-    // 사용자 정의 날짜 셀
+    // 사용자 정의 단일 날짜 셀 렌더링
     const CustomDay = (props) => {
         const { day, ...other } = props
         const isBetweenRange = isInRange(day)
@@ -77,7 +79,7 @@ function Dateselector(props, ref) {
                 <div className="calendar-container">
                     {/* 첫 번째 달력 (현재 월) */}
                     <DateCalendar
-                        key={leftRefDate.format('YYYY-MM')} // key 綁定月份，變了就重建
+                        key={leftRefDate.format('YYYY-MM')} 
                         value={startDate || undefined}
                         referenceDate={leftRefDate}
                         onChange={handleChange}
@@ -87,7 +89,7 @@ function Dateselector(props, ref) {
                     />
                     {/* 두 번째 달력 (다음 월) */}
                     <DateCalendar
-                        key={rightRefDate.format('YYYY-MM')} // 同上
+                        key={rightRefDate.format('YYYY-MM')} 
                         value={endDate || undefined}
                         referenceDate={rightRefDate}
                         onChange={handleChange}

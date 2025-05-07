@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames';
 import { SearchSectionsWrapper } from './style'
 
+// 섹션 클릭 시 활성화 상태 및 내용 표시
 const SearchSections = memo((props) => {
     const { searchInfos, onSectionClick, activeIndex } = props
 

@@ -4,6 +4,7 @@ import RoomItem from '../room-item'
 import { RoomsWrapper } from './style'
 
 const SectionRooms = memo((props) => {
+    // props 에서 roomList, column, gap 가져오고 기본값 설정
     const { roomList = [], column = 4, gap = 24 } = props
 
     return (

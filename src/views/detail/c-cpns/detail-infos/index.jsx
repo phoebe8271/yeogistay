@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
 
 import { InfosWrapper } from './style'
 import { shallowEqual, useSelector } from 'react-redux'
@@ -21,15 +20,12 @@ const DetailInfos = memo(() => {
   return (
     <InfosWrapper>
       <div className="detailinfos">
-        
         <div className="namesinfo">
           <div className='detail-title'>{detailInfo.title}</div>
           {detailInfo.verify_info?.[0]?.message && (
             <div className="verify-message">{detailInfo.verify_info[0].message.join("・")}</div>
           )}
         </div>
-
-
 
         <div className='center-part'>
           <div className='review-section'>
@@ -41,9 +37,7 @@ const DetailInfos = memo(() => {
             <TipContainer />
             <DetailCard />
           </div>
-
         </div>
-
 
         <div className="room-pic">
           <span>숙박 장소</span>
@@ -66,10 +60,6 @@ const DetailInfos = memo(() => {
     </InfosWrapper>
   )
 })
-
-DetailInfos.propTypes = {
-
-}
 
 export default DetailInfos
 

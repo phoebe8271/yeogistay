@@ -29,6 +29,7 @@ margin-bottom: 20px;
     &:hover {
         border: 1.5px solid ${props => props.theme.color.primaryColor};
     }
+    
     &.active{
         color: #fff;
         background-color: ${props => props.theme.color.primaryColor};

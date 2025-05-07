@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react'
-import PropTypes from 'prop-types'
+
 import IosShareIcon from '@mui/icons-material/IosShare';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -16,8 +16,8 @@ const DetailHeader = memo(() => {
         detailInfo: state.detail.detailInfo
     }), shallowEqual)
 
-    if (!detailInfo?.verify_info) {
-        return <div>Loading...</div>
+    if (!detailInfo?.name) {
+        return null;
       }
 
     return (
@@ -49,9 +49,5 @@ const DetailHeader = memo(() => {
         </HeaderWrapper>
     )
 })
-
-DetailHeader.propTypes = {
-
-}
 
 export default DetailHeader

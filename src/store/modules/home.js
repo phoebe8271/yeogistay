@@ -68,3 +68,4 @@ export const {
 } = homeSlice.actions
 
 export default homeSlice.reducer;
+// 백엔드에서 홈 데이터 요청 후 각 블록 state 갱신

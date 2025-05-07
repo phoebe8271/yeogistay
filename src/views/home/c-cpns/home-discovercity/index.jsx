@@ -21,18 +21,13 @@ const HomeDiscoverCity = memo((props) => {
                     }
                 </ScrollView>
             </div>
-
-
             <SectionFooter />
-
-
         </DiscoverCityWrapper>
     )
 })
 
 HomeDiscoverCity.propTypes = {
     infoData: PropTypes.object
-
 }
 
 export default HomeDiscoverCity

@@ -31,3 +31,4 @@ const detailSlice = createSlice({
 
 export const { changeDetailInfoAction } = detailSlice.actions;
 export default detailSlice.reducer;
+// 단일 숙소 상세 정보 가져오기

@@ -12,6 +12,7 @@ const DiscoverCityItem = memo((props) => {
                         <img src={`http://localhost:1337${itemData.picture_url?.formats?.medium?.url}`} alt=""></img>
                     </div>
 
+                    {/* 배경 커버: 그라데이션 효과용 */}
                     <div className='bg-cover'></div>
 
                     <div className='info'>
@@ -26,7 +27,6 @@ const DiscoverCityItem = memo((props) => {
 
 DiscoverCityItem.propTypes = {
     itemData: PropTypes.object
-
 }
 
 export default DiscoverCityItem

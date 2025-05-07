@@ -1,12 +1,12 @@
 import * as actionTypes from "./constants"
 
-// 初始化
+// 각 액션 타입에 따라 해당 state 값 업데이트
 const initialState = {
-    currentPage: 0, // 當前頁碼
-    roomList: [], // 房間列表
-    totalCount: 0, // 總數據個數
+    currentPage: 0, // 현재 페이지 번호
+    roomList: [], // 숙소 목록
+    totalCount: 0, // 총 개수
 
-    isLoading: false
+    isLoading: false // 로딩 중 여부
 }
 
 function reducer(state = initialState, action) {

@@ -4,17 +4,16 @@ const mainSlice = createSlice({
     name: 'main',
     initialState: {
         headerConfig: {
-            isFixed: false, // 固定
-            topAlpha: false // 透明度
+            isFixed: false, // 고정 여부
+            topAlpha: false // 투명 여부
         }
-
     },
     reducers: {
         changeHeaderConfigAction(state, { payload }) {
             state.headerConfig = payload
         }
-
     }
 })
 export const { changeHeaderConfigAction } = mainSlice.actions
 export default mainSlice.reducer
+// 헤더 설정 관리 (고정, 투명 등)
