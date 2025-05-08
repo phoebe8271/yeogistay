@@ -1,5 +1,4 @@
 import React, { memo, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { EntireWrapper } from './style'
 import EntireFilter from './c-cpns/entire-filter/index'
 import EntireRooms from './c-cpns/entire-rooms/index'
@@ -9,12 +8,14 @@ import { fetchRoomListAction } from '@/store/modules/entire/actionCreators'
 import { changeHeaderConfigAction } from '@/store/modules/main'
 
 const Entire = memo(() => {
-  // 發送網路請求，獲取數據，並且保存當前的頁面
+  // dispatch 함수 가져오기
   const dispatch = useDispatch()
   useEffect(() => {
+    // 페이지 진입 시 → 숙소 리스트 요청 action 호출
     dispatch(fetchRoomListAction())
+    // header 설정 변경: fixed true, 투명도 false
     dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
-  }, [dispatch])
+  }, [dispatch]) // 컴포넌트 마운트 시 1회 실행
 
   return (
     <EntireWrapper>
@@ -24,9 +25,5 @@ const Entire = memo(() => {
     </EntireWrapper>
   )
 })
-
-Entire.propTypes = {
-
-}
 
 export default Entire

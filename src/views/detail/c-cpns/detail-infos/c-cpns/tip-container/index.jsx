@@ -5,7 +5,6 @@ import DiamondIcon from '@/assets/svg/icon/gem.svg?react';
 export default memo(function TipContainer() {
     return (
         <TipWapper>
-
             <div className="tip-container">
                 <DiamondIcon className="tip-icon" />
 
@@ -14,7 +13,6 @@ export default memo(function TipContainer() {
                     <span>이 숙소는 보통 예약이 가득 차 있습니다!</span>
                 </div>
             </div>
-
         </TipWapper>
     )
 })

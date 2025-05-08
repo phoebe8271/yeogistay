@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
 import { PaginationWrapper } from './style'
 import Pagination from '@mui/material/Pagination';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -7,25 +6,23 @@ import { fetchRoomListAction } from '@/store/modules/entire/actionCreators';
 
 
 const EntirePagination = memo(() => {
-
-
   const { totalCount, currentPage, roomList } = useSelector((state) => ({
     totalCount: state.entire.totalCount,
     currentPage: state.entire.currentPage,
     roomList: state.entire.roomList
   }), shallowEqual)
 
-  const totalPage = Math.ceil(totalCount / 12)
-  const startCount = currentPage * 12 + 1
-  const endCount = (currentPage + 1) * 12
+  const totalPage = Math.ceil(totalCount / 12) // 전체 페이지 수 (한 페이지에 12개 → 올림)
+  const startCount = currentPage * 12 + 1 // 현재 페이지 시작 번호
+  const endCount = (currentPage + 1) * 12 // 현재 페이지 끝 번호
 
-  // 事件處理
+  // dispatch 함수 가져오기
   const dispatch = useDispatch()
+  
+  
   function pageChangeHandle(event, pageCount) {
-    // 回到頂部
-    window.scrollTo(0, 0)
-    dispatch(fetchRoomListAction(pageCount - 1))
-
+    window.scrollTo(0, 0) // 페이지 변경 시 → 스크롤 맨 위로 이동
+    dispatch(fetchRoomListAction(pageCount - 1)) // 새로운 페이지 데이터 요청 (page 0부터 시작 → -1)
   }
 
   return (
@@ -44,9 +41,5 @@ const EntirePagination = memo(() => {
     </PaginationWrapper >
   )
 })
-
-EntirePagination.propTypes = {
-
-}
 
 export default EntirePagination

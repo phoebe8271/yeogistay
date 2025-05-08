@@ -10,14 +10,17 @@ import { shallowEqual, useSelector } from 'react-redux'
 
 
 const DetailHeader = memo(() => {
+    // 좋아요 체크 상태 정의 (기본 false)
     const [favoriteChecked, setFavoriteChecked] = useState(false)
 
+    // redux state에서 detailInfo 가져오기 (상세페이지 데이터)
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
     }), shallowEqual)
 
+    //  detailInfo.name 없으면 렌더링 안 함
     if (!detailInfo?.name) {
-        return null;
+        return null; 
       }
 
     return (
@@ -40,12 +43,10 @@ const DetailHeader = memo(() => {
                             icon={<FavoriteBorder />}
                             checkedIcon={<Favorite />}
                         />
-
                         <span>저장</span>
                     </div>
                 </div>
             </div>
-
         </HeaderWrapper>
     )
 })

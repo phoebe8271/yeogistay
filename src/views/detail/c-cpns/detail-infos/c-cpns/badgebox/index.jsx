@@ -8,10 +8,12 @@ import StarIcon from '@/assets/svg/icon/star.svg?react';
 
 export default memo(function BadgeBox() {
 
+    // redux state에서 detailInfo 가져오기 (상세 페이지 데이터)
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
     }), shallowEqual)
 
+    // bottom_info 없거나 배열 아니면 → "Loading..." 표시
     if (!detailInfo?.bottom_info || !Array.isArray(detailInfo.bottom_info)) {
         return <div>Loading...</div>
     }
@@ -47,8 +49,6 @@ export default memo(function BadgeBox() {
                     </div>
                 </div>
             </div>
-
-
 
         </BadgeBoxWrapper>
     )

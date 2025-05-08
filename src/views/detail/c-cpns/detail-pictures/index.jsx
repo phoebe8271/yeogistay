@@ -4,24 +4,22 @@ import { shallowEqual, useSelector } from 'react-redux'
 import PictureBrowser from '@/base-ui/picture-browser/index'
 
 export default memo(function DetailPictures() {
-    // 定義組件內部狀態
+    
+    // 상태: PictureBrowser 보이기 여부
     const [showBrowser, setShowBrowser] = useState(false)
 
-
-    // 從 reduex 中獲取數據
+    // redux state에서 detailInfo 가져오기
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
-
     }), shallowEqual)
 
-    // 統一處理 picture_url 為陣列形式
+    // picture_url이 배열이 아니어도 배열로 변환
     const rawPictures = detailInfo?.picture_url
     const pictures = Array.isArray(rawPictures)
         ? rawPictures
         : rawPictures
             ? [rawPictures]
             : []
-
 
     return (
         <PicturesWrapper>

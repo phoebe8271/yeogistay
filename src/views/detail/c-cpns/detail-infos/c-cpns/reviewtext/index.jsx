@@ -7,10 +7,12 @@ import ReviewProfileIcon from '@/assets/svg/icon/header-userprofile.svg?react';
 
 export default memo(function ReviewText() {
 
+    // redux state에서 detailInfo 가져오기
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
     }), shallowEqual)
 
+    // 데이터 없거나 배열 아니면 → "Loading..." 출력
     if (!detailInfo?.bottom_info || !Array.isArray(detailInfo.bottom_info)) {
         return <div>Loading...</div>
     }

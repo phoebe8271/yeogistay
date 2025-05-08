@@ -4,14 +4,17 @@ import { shallowEqual, useSelector } from 'react-redux'
 
 export default memo(function DetailCard() {
 
+    // redux state에서 detailInfo 가져오기
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
     }), shallowEqual)
 
+    // 데이터 없거나 배열 아니면 → "Loading..." 표시
     if (!detailInfo?.bottom_info || !Array.isArray(detailInfo.bottom_info)) {
         return <div>Loading...</div>
     }
 
+    // 5박 기준 → 객실요금, 서비스 수수료, 총액 계산
     const nights = 5;
     const roomPrice = detailInfo.price * nights;
     const serviceFee = Math.round(roomPrice * 0.168);

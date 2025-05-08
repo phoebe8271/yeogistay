@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { RoomsWrapper } from './style'
 import { shallowEqual, useSelector } from 'react-redux'
 import RoomItem from '@/components/room-item/index'
@@ -8,15 +7,17 @@ import RoomItem from '@/components/room-item/index'
 
 const EntireRooms = memo(() => {
     
-    // 從 redux 中獲取 roomList 數據
+    // redux store에서 roomList 상태 가져오기
     const { roomList, totalCount, isLoading } = useSelector((state) => ({
         roomList: state.entire.roomList,
         totalCount: state.entire.totalCount,
         isLoading: state.entire.isLoading
-    }), shallowEqual)
+    }), shallowEqual) // 얕은 비교로 불필요한 리렌더 방지
 
-    // 點擊卡片後跳轉詳情頁面
+    // 페이지 이동 함수 가져오기
     const navigate = useNavigate()
+
+    // 숙소 카드 클릭 시 detail 페이지 이동 (useCallback으로 함수 메모이제이션)
     const itemClickHandle = useCallback((item) => {
         navigate(`/detail/${item.id}`)
     }, [navigate])
@@ -42,9 +43,5 @@ const EntireRooms = memo(() => {
         </RoomsWrapper>
     )
 })
-
-EntireRooms.propTypes = {
-
-}
 
 export default EntireRooms
